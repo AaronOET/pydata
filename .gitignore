@@ -1,2 +1,4 @@
 # Ignore Gradle GUI config
 _build/
+# Ignore every __pycache__ in each directory
+**/__pycache__/

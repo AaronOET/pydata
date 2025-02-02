@@ -4,6 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: Python機器學習與深度學習特訓班_碁峰
+# - file: notebooks
+# - file: markdown-notebooks

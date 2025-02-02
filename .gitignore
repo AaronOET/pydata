@@ -2,3 +2,5 @@
 _build/
 # Ignore every __pycache__ in each directory
 **/__pycache__/
+# Ignore ipynb_checkpoints in each directory
+**/ipynb_checkpoints/

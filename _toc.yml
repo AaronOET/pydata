@@ -4,7 +4,12 @@
 format: jb-book
 root: intro
 chapters:
-- file: wordcloud/Python機器學習與深度學習特訓班_碁峰/CH07_自然語言處理_文字雲與文章自動摘要
-- file: wordcloud/資訊社會必修的12堂Python通識課_博碩/CH11_資料視覺化與圖表繪製
+  - file: wordcloud/readme
+    sections:    
+    - file: wordcloud/Python機器學習與深度學習特訓班_碁峰/CH07_自然語言處理_文字雲與文章自動摘要
+    - file: wordcloud/資訊社會必修的12堂Python通識課_博碩/CH11_資料視覺化與圖表繪製
+# chapters:
+# - file: wordcloud/Python機器學習與深度學習特訓班_碁峰/CH07_自然語言處理_文字雲與文章自動摘要
+# - file: wordcloud/資訊社會必修的12堂Python通識課_博碩/CH11_資料視覺化與圖表繪製
 # - file: notebooks
 # - file: markdown-notebooks

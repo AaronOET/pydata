@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9.3 文章摘要及文字雲 &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'wordcloud/Python實戰聖經_碁峰/CH09_文章摘要及文字雲';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="CH11 資料視覺化與圖表繪製 - Word Cloud" href="../%E8%B3%87%E8%A8%8A%E7%A4%BE%E6%9C%83%E5%BF%85%E4%BF%AE%E7%9A%8412%E5%A0%82Python%E9%80%9A%E8%AD%98%E8%AA%B2_%E5%8D%9A%E7%A2%A9/CH11_%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E8%88%87%E5%9C%96%E8%A1%A8%E7%B9%AA%E8%A3%BD.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to pydata Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../readme.html">Word Cloud Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Python%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E7%89%B9%E8%A8%93%E7%8F%AD_%E7%A2%81%E5%B3%B0/CH07_%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86_%E6%96%87%E5%AD%97%E9%9B%B2%E8%88%87%E6%96%87%E7%AB%A0%E8%87%AA%E5%8B%95%E6%91%98%E8%A6%81.html">CH07 自然語言處理 - 文字雲與文章自動摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../%E8%B3%87%E8%A8%8A%E7%A4%BE%E6%9C%83%E5%BF%85%E4%BF%AE%E7%9A%8412%E5%A0%82Python%E9%80%9A%E8%AD%98%E8%AA%B2_%E5%8D%9A%E7%A2%A9/CH11_%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E8%88%87%E5%9C%96%E8%A1%A8%E7%B9%AA%E8%A3%BD.html">CH11 資料視覺化與圖表繪製 - Word Cloud</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3 文章摘要及文字雲</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fwordcloud/Python實戰聖經_碁峰/CH09_文章摘要及文字雲.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/wordcloud/Python實戰聖經_碁峰/CH09_文章摘要及文字雲.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>9.3 文章摘要及文字雲</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumy">sumy：對網頁或文章進行摘要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordcloud">wordcloud：文字雲</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>9.3 文章摘要及文字雲<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="sumy">
+<h2>sumy：對網頁或文章進行摘要<a class="headerlink" href="#sumy" title="Link to this heading">#</a></h2>
+<p>資料來源：<span id="id2">[<a class="reference internal" href="../%E8%B3%87%E8%A8%8A%E7%A4%BE%E6%9C%83%E5%BF%85%E4%BF%AE%E7%9A%8412%E5%A0%82Python%E9%80%9A%E8%AD%98%E8%AA%B2_%E5%8D%9A%E7%A2%A9/CH11_%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E8%88%87%E5%9C%96%E8%A1%A8%E7%B9%AA%E8%A3%BD.html#id4" title="文淵閣工作室. 9.3 文章摘要及文字雲, chapter 9, pages 9-17–9-25. 基峰, 2021.">21</a>]</span></p>
+<blockquote>
+<div><p>!pip install sumy</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;punkt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to
+[nltk_data]     C:\Users\User\AppData\Roaming\nltk_data...
+[nltk_data]   Unzipping tokenizers\punkt.zip.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sumy.parsers.html</span> <span class="kn">import</span> <span class="n">HtmlParser</span>
+<span class="kn">from</span> <span class="nn">sumy.parsers.plaintext</span> <span class="kn">import</span> <span class="n">PlaintextParser</span>
+<span class="kn">from</span> <span class="nn">sumy.nlp.tokenizers</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<span class="kn">from</span> <span class="nn">sumy.summarizers.lsa</span> <span class="kn">import</span> <span class="n">LsaSummarizer</span> <span class="k">as</span> <span class="n">Summarizer</span>
+<span class="kn">from</span> <span class="nn">sumy.nlp.stemmers</span> <span class="kn">import</span> <span class="n">Stemmer</span>
+<span class="kn">from</span> <span class="nn">sumy.utils</span> <span class="kn">import</span> <span class="n">get_stop_words</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LANGUAGE</span> <span class="o">=</span> <span class="s2">&quot;chinese&quot;</span>
+<span class="c1"># LANGUAGE = &quot;english&quot;</span>
+<span class="n">SENTENCES_COUNT</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="c1"># SENTENCES_COUNT = 10</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://news.ltn.com.tw/news/life/breakingnews/3649202&quot;</span>
+<span class="c1"># url = &quot;https://en.wikipedia.org/wiki/Automatic_summarization&quot;</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">HtmlParser</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">))</span>
+<span class="n">summarizer</span> <span class="o">=</span> <span class="n">Summarizer</span><span class="p">(</span><span class="n">Stemmer</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">))</span>
+<span class="n">summarizer</span><span class="o">.</span><span class="n">stop_words</span> <span class="o">=</span> <span class="n">get_stop_words</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">)</span>
+<span class="n">sumies</span> <span class="o">=</span> <span class="n">summarizer</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">SENTENCES_COUNT</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sumies</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">. </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sentence</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+Dumping model to file cache C:\Users\User\AppData\Local\Temp\jieba.cache
+Loading model cost 0.390 seconds.
+Prefix dict has been built successfully.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. 2021/08/24 20:07〔記者吳俊鋒／台南報導〕台南仁德區的保華宮，結合中元普度，與社會大眾聯手募集愛心供品，包含1800斤的白米，以及各式生活物資，祭拜後，今天一併發放給低收入戶，照顧弱勢，讓民間傳統習俗也兼具慈善公益的意義。
+2. 保華宮主委黃翠雲指出，農曆7月也是慈悲月，今年適逢防疫警戒，呼籲信眾以代購普品的方式，做好中元祭拜，並降低群聚風險，還號召活動之後捐助給有需要幫助的⼈，廟方抱持感恩的心，善盡社會責任，獲得熱烈迴響。
+3. 仁德區公所轄內列冊的低收入家庭有237戶，保華宮準備豐盛的供品，宴請四方好兄弟，並將募集的愛心米，連同麵食、罐頭、油品等物資一起捐助弱勢，今天在廟內發放。
+4. 該廟還提供了環保袋，將救濟物資裝好，讓低收入戶方便領取，市議員吳禹寰也到場協助發放，並呼籲社會各界，疫情期間，弱勢生活大不易，需要更多關懷。
+5. 仁德區保華宮將中元普度結合愛心公益，捐助弱勢。
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LANGUAGE</span> <span class="o">=</span> <span class="s2">&quot;chinese&quot;</span>
+<span class="n">SENTENCES_COUNT</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">PlaintextParser</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;ch09/article1.txt&quot;</span><span class="p">,</span> <span class="n">Tokenizer</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">))</span>
+<span class="n">summarizer</span> <span class="o">=</span> <span class="n">Summarizer</span><span class="p">(</span><span class="n">Stemmer</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">))</span>
+<span class="n">summarizer</span><span class="o">.</span><span class="n">stop_words</span> <span class="o">=</span> <span class="n">get_stop_words</span><span class="p">(</span><span class="n">LANGUAGE</span><span class="p">)</span>
+<span class="n">sumies</span> <span class="o">=</span> <span class="n">summarizer</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">SENTENCES_COUNT</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sumies</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">. </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sentence</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. 直到有一天，老公公被証實患上癌症，現在，他除了要克服生活的不便外，還要接受物理治療和疾病帶來的痛楚。
+2. 』 可能疾病初期帶來的痛楚不大，但到後期，一個體弱的老人家還熬得下去嗎？
+3. 』 老婆婆微笑回答：『一個大男人，要妻子每天清理大小二便的，還在逞強呢！
+4. 護士很詫異，她衝口而出地對老公公說： 『我們都以為你是因為不捨得老婆婆才那麼堅強地活下去呢！
+5. 』 老公公又接著說：『這妮子呀，我從和她結婚那天起便對自己許諾，一輩子都不讓她哭泣的，大約她不知道吧，那次她看見我在床上捲曲，哭了起來，那時我的痛苦，比病魔對我的折磨還要難受......，白頭到老嘛，我們做到了，遺憾的是，我始終令她為我哭過一次......。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="wordcloud">
+<h2>wordcloud：文字雲<a class="headerlink" href="#wordcloud" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">jieba</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ch09/travel.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">jieba</span><span class="o">.</span><span class="n">set_dictionary</span><span class="p">(</span><span class="s2">&quot;ch09/dict.txt.big.txt&quot;</span><span class="p">)</span>
+<span class="c1"># with open(&quot;ch09/stopWord_cloud.txt&quot;, &quot;r&quot;, encoding=&quot;utf-8-sig&quot;) as f:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;ch09/stopWord_cloudmod.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">stops</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Remove any empty strings that might appear from trailing newlines</span>
+    <span class="c1"># stops = [word for word in stops if word.strip()]</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">cut_all</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># if t not in stops:</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stops</span><span class="p">:</span>  <span class="c1"># Fix multiline issue</span>
+        <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">diction</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span>
+<span class="n">fontfile</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://drive.google.com/uc?id=1QdaqR8Setf4HEulrIW79UEV_Lg_fuoWz&amp;export=download&quot;</span>
+<span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;taipei_sans_tc_beta.ttf&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fontfile</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">font_path</span><span class="o">=</span><span class="s2">&quot;taipei_sans_tc_beta.ttf&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add boundary shape of world cloud</span>
+<span class="c1"># mask = np.array(Image.open(&quot;ch09/heart.png&quot;))</span>
+<span class="c1"># wordcloud = WordCloud(background_color=&quot;white&quot;,mask=mask,font_path=&#39;taipei_sans_tc_beta.ttf&#39;)</span>
+
+<span class="n">wordcloud</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">frequencies</span><span class="o">=</span><span class="n">diction</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">wordcloud</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;bookCloud2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from D:\REPO_GITHUB_OET\pydata\wordcloud\Python實戰聖經_碁峰\ch09\dict.txt.big.txt ...
+Loading model from cache C:\Users\User\AppData\Local\Temp\jieba.u31f7736fe6e59019fd3c6ee97845f32c.cache
+Loading model cost 0.654 seconds.
+Prefix dict has been built successfully.
+</pre></div>
+</div>
+<img alt="../../_images/b3f4026e141edaaa3bd1c43f74fbfc15a6eb05dfac6d953f12261eb6d459e5f0.png" src="../../_images/b3f4026e141edaaa3bd1c43f74fbfc15a6eb05dfac6d953f12261eb6d459e5f0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;wordcloud.wordcloud.WordCloud at 0x21da1f43c80&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./wordcloud\Python實戰聖經_碁峰"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../%E8%B3%87%E8%A8%8A%E7%A4%BE%E6%9C%83%E5%BF%85%E4%BF%AE%E7%9A%8412%E5%A0%82Python%E9%80%9A%E8%AD%98%E8%AA%B2_%E5%8D%9A%E7%A2%A9/CH11_%E8%B3%87%E6%96%99%E8%A6%96%E8%A6%BA%E5%8C%96%E8%88%87%E5%9C%96%E8%A1%A8%E7%B9%AA%E8%A3%BD.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CH11 資料視覺化與圖表繪製 - Word Cloud</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumy">sumy：對網頁或文章進行摘要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wordcloud">wordcloud：文字雲</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

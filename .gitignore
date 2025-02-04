@@ -4,3 +4,6 @@ _build/
 **/__pycache__/
 # Ignore ipynb_checkpoints in each directory
 **/ipynb_checkpoints/
+# Ignore every .ipynb_checkpoints in each directory  
+**/.virtual_documents/
+**/.vscode/
